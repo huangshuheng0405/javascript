@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    const fn = function () {
+      console.log(123);
+      
+    }
+
+
+    const fn1 = () => {
+      console.log(456);
+    }
+ 
+    // 只有一个形参 () 可以省略
+    // 形参是0个或者多个时，()不能省略
+    const fn2 = param => {
+      console.log(param);
+    }
+    fn2(100)
+
+    // 函数体只有一行代码时，大括号{}可以省略
+    const fn3 = param => console.log(param);
+
+    // 函数体只有一行代码时，return可以省略
+    const sum = (a, b) => a + b
+    console.log(sum(20, 30));
+
+    // 箭头函数可以直接返回一个对象
+    const name = (uname) => ({uname: uname})
+    console.log(name("huangshuheng"));
+
+  </script>
+</body>
+</html>

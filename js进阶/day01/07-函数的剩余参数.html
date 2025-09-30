@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function getSum(...arr) {
+      //   console.log(arr);
+      //   let sum = 0
+      //   for (let i = 0; i < arr.length; i++) {
+      //     sum += arr[i]
+      //   }
+      //   console.log(sum);
+      // }
+
+      // getSum(2, 3)
+      // getSum(2, 3, 4, 6, 7)
+
+
+      // ...arr 剩余参数
+      // 把多余的参数放到一个数组中
+      // 剩余数组是真数组 可以push pop shift unshift splice sort reverse
+      function getSum(a, b, ...arr) {
+        console.log(arr);
+        let sum = 0
+        for (let i = 0; i < arr.length; i++) {
+          sum += arr[i]
+        }
+        console.log(sum);
+      }
+
+      getSum(2, 3)
+      getSum(2, 3, 4, 6, 7)
+    </script>
+  </body>
+</html>
