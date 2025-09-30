@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    const arr = ['red', 'blue', 'pink']
+
+    // 处理数据并返回一个数组
+    const newArr = arr.map(function(ele, index) {
+      console.log(ele);
+      console.log(index);
+      return ele + ' color'
+    })
+
+    console.log(newArr);
+
+    // 括号为空用逗号分开
+    console.log(newArr.join(''));
+    
+    
+  </script>
+</body>
+</html>

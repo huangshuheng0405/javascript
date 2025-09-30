@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+
+      .wrapper {
+        width: 840px;
+        height: 420px;
+        background: url(./images/bg01.jpg)  no-repeat center / cover;
+        padding: 100px 250px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <strong>年会抽奖</strong>
+      <h1>一等奖：<span id="one">???</span></h1>
+      <h3>二等奖：<span id="two">???</span></h3>
+      <h5>三等奖：<span id="three">???</span></h5>
+    </div>
+
+    <script>
+      const personArr = ["周杰伦", "刘德华", "周星驰", "Pink老师", "张学友"]
+
+      const rd = Math.floor(Math.random() * personArr.length)
+      const one = document.querySelector('#one')
+      one.innerHTML = personArr[rd]
+      // 选完之后要删除
+      personArr.splice(rd, 1)
+
+      const rd2 = Math.floor(Math.random() * personArr.length)
+      const two = document.querySelector('#two')
+      two.innerHTML = personArr[rd2]
+      // 选完之后要删除
+      personArr.splice(rd2, 1)
+
+      const rd3 = Math.floor(Math.random() * personArr.length)
+      const three = document.querySelector('#three')
+      three.innerHTML = personArr[rd3]
+      // 选完之后要删除
+      personArr.splice(rd3, 1)
+    </script>
+  </body>
+</html>

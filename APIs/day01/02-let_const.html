@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = ['red', 'pink']
+      arr.push('blue')
+      // 没有改变arr的地址 只是在堆里改变了数据
+      console.log(arr);
+
+      // 给arr重新赋值 会在栈里面新加一个地址 所以会报错
+      arr = [1, 2, 3]
+      console.log(arr);
+      
+      // 可以追加 但不能重新赋值
+    </script>
+  </body>
+</html>

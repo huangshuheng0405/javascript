@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>click</button>
+  <script>
+    const btn = document.querySelector('button')
+    btn.onclick = function() {
+      alert(11)
+    }
+    btn.onclick = function() {
+      alert(22)
+    }
+    // 会覆盖之前的   因为是赋值
+  </script>
+</body>
+</html>

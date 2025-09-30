@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <input type="text" name="username">
+    <input type="password" name="pwd">
+    <button>submit</button>
+  </form>
+
+  <a href="#/download">download</a>
+
+
+  <button class="reload">reload</button>
+
+  <script>
+    console.log(location); // location是对象
+    console.log(location.href);
+    // 返回 包括？后面的部分
+    console.log(location.search);
+
+    // 获取地址中的哈希值  #后面部分
+    console.log(location.hash);
+    
+    
+    // 经常利用href  利用js的方法去跳转页面
+    // location.href = 'http://www.baidu.com'
+    
+    const reload = document.querySelector('.reload')
+    reload.addEventListener('click', () => {
+      // 刷新页面  传入参数true 强制刷新
+      location.reload()
+    })
+
+  </script>
+</body>
+</html>

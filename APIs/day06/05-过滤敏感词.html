@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>release</button>
+    <div>123</div>
+
+    <script>
+      const tx = document.querySelector('textarea')
+      const btn = document.querySelector('button')
+      const div = document.querySelector('div')
+
+      btn.addEventListener('click', function () {
+        console.log(tx.value)
+
+        div.innerText = tx.value.replace(/激情|热情/g, '***')
+        // 清空文本域
+        tx.value = ''
+      })
+    </script>
+  </body>
+</html>

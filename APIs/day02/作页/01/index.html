@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+
+  <body>
+    <input type="button" value="切换" id="btn" /><br />
+    <img src="images/1.jpg" width="300" id="img" />
+
+    <script>
+      const arr = [
+        'images/1.jpg',
+        'images/01.gif',
+        'images/02.gif',
+        'images/2.jpg',
+        'images/3.jpg',
+      ]
+
+      const btn = document.querySelector('#btn')
+      const img = document.querySelector('#img')
+
+      function getRandom(n, m) {
+        return parseInt(Math.random() * (m - n + 1)) + n
+      }
+
+      btn.addEventListener('click', function () {
+        let rd = getRandom(0, arr.length - 1)
+        img.src = arr[rd]
+      })
+    </script>
+  </body>
+</html>

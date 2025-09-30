@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+
+    // 有哈就返回true
+    console.log(/哈/.test('二哈'));
+
+    // 以哈开头
+    console.log(/^哈/.test('二哈'));
+    // 以哈结尾
+    console.log(/哈$/.test('二哈'));
+    // 以哈开头并且以哈结尾
+    console.log(/^哈$/.test('哈'));
+
+    // 以哈开头并且以哈结尾  只能有一个哈开头并结尾
+    console.log(/^哈$/.test('哈哈')); // false
+    // ^和$ 表示精准匹配 
+
+    // * 表示0个或者多个  只能有哈
+    console.log(/^哈*$/.test('')); // true
+    console.log(/^哈*$/.test('哈')); // true    
+    console.log(/^哈*$/.test('二哈')); // false 有别的字就不行   
+    
+    // + 表示1个或者多个  只能有哈
+    console.log(/^哈+$/.test('')); // false 
+    
+    // ? 表示0个或者1个  只能有哈
+    console.log(/^哈?$/.test('')); // true
+    console.log(/^哈?$/.test('哈')); // true
+    console.log(/^哈?$/.test('哈哈')); // false
+
+
+    // {n} 表示n个  n是多少 就必须出现几次
+    console.log(/^哈{2}$/.test('')); // false
+    console.log(/^哈{2}$/.test('哈')); // false
+    console.log(/^哈{2}$/.test('哈哈')); // true
+    console.log(/^哈{2}$/.test('哈哈哈')); // false
+
+    // {n,} 重复n次或者更多
+    console.log(/^哈{2,}$/.test('')); // false
+    console.log(/^哈{2,}$/.test('哈')); // false
+    console.log(/^哈{2,}$/.test('哈哈')); // true
+    console.log(/^哈{2,}$/.test('哈哈哈')); // true
+
+    // {n,m} 重复n到m次 逗号两边不能有空格 >= n && <= m
+    console.log(/^哈{2,3}$/.test('')); // false
+    console.log(/^哈{2,3}$/.test('哈')); // false
+    console.log(/^哈{2,3}$/.test('哈哈')); // true
+    console.log(/^哈{2,3}$/.test('哈哈哈')); // true
+    console.log(/^哈{2,3}$/.test('哈哈哈哈')); // false 
+    
+    // [abc] 表示只能是abc中的一个
+    console.log(/^[abc]$/.test('')); // false
+    console.log(/^[abc]$/.test('a')); // true
+    console.log(/^[abc]$/.test('ab')); // false 
+    console.log(/^[abc]{2}$/.test('ab')); // true
+
+    // [a-z] 只选一个
+    console.log(/^[a-z]$/.test('')); // false
+    console.log(/^[a-z]$/.test('a')); // true
+
+    console.log(/^[0-9]$/.test(2)); // false
+    console.log(/^[a-z0-9A-Z]$/.test('A')); // true
+    
+    // [^abc] 不能是abc中的任何一个
+    console.log(/^[^abc]$/.test('')); // false
+    console.log(/^[^abc]$/.test('a')); // false
+    console.log(/^[^abc]$/.test('d')); // true
+
+    // \d 数字 [0-9]
+    console.log(/^\d$/.test('')); // false
+    console.log(/^\d$/.test('2')); // true
+
+    // . 任意字符 除了换行符
+    console.log(/^.$/.test('')); // false
+    console.log(/^.$/.test('2')); // true
+    console.log(/^.$/.test('哈')); // true
+    console.log(/^.$/.test('哈2')); // false
+    console.log(/^.$/.test('哈\n')); // false
+    console.log(/^.{2}$/.test('哈2')); // true
+    console.log(/^.{2}$/.test('哈\n')); // false
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">123</div>
+    <div class="box">abc</div>
+    <p id="nav">1234</p>
+
+    <ul>
+      <li>test1</li>
+      <li>test2</li>
+      <li>test3</li>
+    </ul>
+
+    <ul class="nav">
+      <li>t1</li>
+      <li>t2</li>
+      <li>t3</li>
+    </ul>
+
+    <script>
+      // 获取匹配的第一个元素
+      const box = document.querySelector(".box")
+      console.log(box)
+      // 能直接修改
+      box.style.background = "red"
+
+      const nav = document.querySelector("#nav")
+      console.log(nav)
+
+      // 括号里 写 css选择器 
+      // 返回值 是一个 对象
+      const li = document.querySelector("ul li:first-child")
+      console.log(li)
+
+      const li3 = document.querySelector("ul li:nth-child(3)")
+      console.log(li3)
+
+      // 选择匹配的多个元素
+      // 返回值 是一个 对象集合
+      // 不能直接修改 只能便历里面的元素进行修改
+      const list = document.querySelectorAll("ul li")
+      console.log(list)
+
+      const list2 = document.querySelectorAll(".nav li")
+
+      for (let i = 0; i < list2.length; i++) {
+        console.log(list2[i])
+      }
+
+      // 元素只有一个 返回值也是 伪数组
+      const t = document.querySelectorAll('#nav')
+      console.log(t);
+      t[0].style.color = 'blue'
+      
+    </script>
+  </body>
+</html>

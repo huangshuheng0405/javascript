@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- <input type="text" value="computer"> -->
+
+  <br>
+
+  <input type="checkbox">
+  <button>click</button>
+
+
+  <script>
+    // const name = document.querySelector('input')
+
+    // console.log(name.value);
+
+    // 要得到表单内容 用 value 不能用innerHTML
+
+    // name.type = 'password'
+    // name.value = 'love'
+    
+    const ipt = document.querySelector('input')
+    console.log(ipt.checked);
+    
+    ipt.checked = true // 勾选
+
+    const button = document.querySelector('button')
+    console.log(button.disabled);
+
+    button.disabled = true
+    
+
+  </script>
+
+</body>
+</html>

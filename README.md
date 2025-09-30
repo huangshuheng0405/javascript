@@ -1902,3 +1902,57 @@ for(let k in obj) {
 </script>
 ```
 
+## 事件监听
+
+结合 DOM 使用事件时，需要为 DOM 对象添加事件监听，等待事件发生（触发）时，便立即调用一个函数。
+
+`addEventListener` 是 DOM 对象专门用来添加事件监听的方法，它的两个参数分别为【事件类型】和【事件回调】。
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件监听</title>
+</head>
+<body>
+  <h3>事件监听</h3>
+  <p id="text">为 DOM 元素添加事件监听，等待事件发生，便立即执行一个函数。</p>
+  <button id="btn">点击改变文字颜色</button>
+  <script>
+    // 1. 获取 button 对应的 DOM 对象
+    const btn = document.querySelector('#btn')
+
+    // 2. 添加事件监听
+    btn.addEventListener('click', function () {
+      console.log('等待事件被触发...')
+      // 改变 p 标签的文字颜色
+      let text = document.getElementById('text')
+      text.style.color = 'red'
+    })
+
+    // 3. 只要用户点击了按钮，事件便触发了！！！
+  </script>
+</body>
+</html>
+```
+
+完成事件监听分成3个步骤：
+
+1. 获取 DOM 元素
+2. 通过 `addEventListener` 方法为 DOM 节点添加事件监听
+3. 等待事件触发，如用户点击了某个按钮时便会触发 `click` 事件类型
+4. 事件触发后，相对应的回调函数会被执行
+
+## 事件类型
+
+### 鼠标事件
+
+`mouseenter`监听鼠标是否移入 DOM 元素
+
+`mouseleave`监听鼠标是否移出 DOM 元素
+
+### 键盘事件
+
+key

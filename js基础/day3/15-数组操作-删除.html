@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr = ['red', 'green', 'blue']
+    // 返回值是被弹出的元素值
+    // pop 弹出最后一个元素
+    console.log(arr.pop());
+    
+
+    // shift 弹出第一个元素
+    console.log(arr.shift());
+    console.log(arr);
+    
+
+    // splice(起始位置，删除数量) 删除指定元素  起始位置从0开始
+    let arr1 = ['red', 'green', 'blue', 'pink', 'orange']
+    arr1.splice(2, 2)
+    console.log(arr1); // red green orange
+    
+  </script>
+</body>
+</html>

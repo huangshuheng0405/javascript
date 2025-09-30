@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>click</button>
+    <script>
+      const btn = document.querySelector('button')
+
+      // btn.onclick = function() {
+      //   alert('click')
+      //   // lo 事件解绑
+      //   btn.onclick = null
+      // }
+
+      function fn() {
+        alert('click')
+      }
+
+      btn.addEventListener('click', fn)
+
+      // 第一个参数是类型 后面是要移除的函数名称 不能是匿名函数
+      btn.removeEventListener('click', fn)
+    </script>
+  </body>
+</html>

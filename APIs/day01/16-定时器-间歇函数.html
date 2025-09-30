@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // setInterval(函数, 间隔时间)
+      setInterval(function() {
+        console.log("hsh");
+        
+      }, 1000)
+
+      function fun() {
+        console.log('hshhhhh');
+      }
+
+      // 没有小括号
+      let n = setInterval(fun, 1000)
+      // 返回值是一个数字 代表定时器的id
+      console.log(n);
+      // 关闭定时器
+      clearInterval(n)
+
+      let i = 1
+      setInterval(function() {
+        i++
+        document.write(i + ' ')
+      }, 1000)
+
+    </script>
+  </body>
+</html>

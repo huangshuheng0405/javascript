@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>click</button>
+
+  <script>
+    // 普通函数里面this指向的是 window
+    function fn() {
+      console.log(this);
+      
+    }
+
+    fn()
+    // 实际上是  window.fn()
+    
+
+    // 谁调用 指向谁
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', function() {
+      // console.log(this);
+
+      // btn.style.color = 'red'
+      this.style.color = 'red'
+      
+    })
+  </script>
+</body>
+</html>

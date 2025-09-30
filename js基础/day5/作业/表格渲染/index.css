@@ -1,0 +1,36 @@
+.score-case {
+  width: 1000px;
+  margin: 50px auto;
+  display: flex;
+}
+.score-case .table {
+  flex: 4;
+}
+.score-case .table table {
+  width: 100%;
+  border-spacing: 0;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+.score-case .table table th {
+  background-color: #f5f5f5;
+}
+.score-case .table table tr:hover td {
+  background-color: #f5f5f5;
+}
+.score-case .table table td,
+.score-case .table table th {
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+}
+.score-case .table table td.red,
+.score-case .table table th.red {
+  color: red;
+}
+.score-case .table .none {
+  height: 100px;
+  line-height: 100px;
+  color: #999;
+}

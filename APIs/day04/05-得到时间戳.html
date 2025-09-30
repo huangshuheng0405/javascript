@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 需要实例化
+      const date = new Date()
+      console.log(date.getTime());
+      
+      // 转成数字型
+      console.log(+new Date());
+
+      // 不能返回以前的时间戳
+      console.log(Date.now());
+      
+      
+      console.log(+new Date('2022-4-1 18:30:00'));
+
+      const arr = ['星期天', '星期一','星期二','星期三','星期四','星期五','星期六']
+      console.log(arr[new Date().getDay()]);
+      
+      
+    </script>
+  </body>
+</html>

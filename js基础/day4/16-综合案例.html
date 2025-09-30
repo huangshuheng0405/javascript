@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let second = +prompt('请输入秒数')
+    function getTime(t) {
+      let hours = parseInt(t / 60 / 60 % 24)
+      let minutes = parseInt(t / 60 % 60)
+      let seconds = parseInt(t % 60)
+      return `转换完是${hours}小时${minutes}分${seconds}秒`
+    }
+    let str = getTime(second)
+    document.write(str)
+    console.log(hours);
+    
+
+  </script>
+</body>
+</html>

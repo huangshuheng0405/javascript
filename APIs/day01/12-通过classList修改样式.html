@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        color: #333;
+      }
+
+      .active {
+        color: red;
+        background-color: pink;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="box">content</div>
+
+
+
+    <script>
+      const div = document.querySelector('.box')
+      // 追加类 不会影响之前的类名
+      div.classList.add('active')
+
+      // 删除类
+      div.classList.remove('box')
+
+      // 切换类 有就删了 没有就加上
+      div.classList.toggle('box')
+    </script>
+  </body>
+</html>

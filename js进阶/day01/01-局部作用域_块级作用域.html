@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <script>
+      for (let i = 0; i < 3; i++) {
+        // 块级作用域
+        console.log(i);
+      }
+      // 报错 超出作用域
+      console.log(i);
+
+      var a = 12;
+      // var 声明的变量没有块级作用域
+
+      
+      function fn() {
+        
+      }
+    </script>
+  </body>
+</html>

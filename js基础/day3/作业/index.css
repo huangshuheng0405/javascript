@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 540px;
+  margin: 20px auto;
+}
+.box li {
+  width: 100px;
+  height: 100px;
+  margin: 0 10px 10px 0;
+}
+.box li img {
+  width: 100%;
+  height: 100%;
+  border: 2px solid pink;
+  border-radius: 10px;
+}
+.box li:nth-child(5n + 1) {
+  margin-right: 0;
+}

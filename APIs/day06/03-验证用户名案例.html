@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        display: inline-block;
+        width: 250px;
+        height: 30px;
+        vertical-align: middle;
+        line-height: 30px;
+        padding-left: 15px;
+
+      }
+      
+      .error {
+        color: red;
+        background: url(./images/error1.png) no-repeat left center;
+      }
+
+      .right {
+        color: green;
+        background: url(./images/right.png) no-repeat left center;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" />
+    <span></span>
+
+
+    <script>
+      // 6-16位  数字 字母 下划线 -
+      const reg = /^[a-z0-9A-Z-_]{6,16}/
+      const input = document.querySelector('input')
+      // 失去焦点事件
+      input.addEventListener('blur', function () {
+        const val = this.value
+        // 获取span nextElementSibling 下一个兄弟元素
+        const span = this.nextElementSibling
+
+        if (reg.test(val)) {
+          span.className = 'right'
+          span.innerText = '用户名格式正确'
+        } else {
+          span.className = 'error'
+          span.innerText = '用户名格式错误'
+        }
+      })
+
+
+    </script>
+  </body>
+</html>

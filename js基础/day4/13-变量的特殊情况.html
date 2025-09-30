@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let num = 10
+    function fun() {
+      num = 20
+    }
+    fun()
+    console.log(num); // 会修改全局变量
+
+    function fun2(x, y) {
+      console.log(x);
+    }
+    fun2(1, 2)
+    // console.log(x); // 报错
+
+    function fun3() {
+      let num = 30
+      function fun4() {
+        // let num = 100
+        console.log(num); // 100
+      }
+      fun4()
+    }
+        
+    fun3() // 30
+  </script>
+</body>
+</html>

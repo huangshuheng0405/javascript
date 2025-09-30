@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="http://www.baidu.com">支付成功<span>5</span>秒钟之后跳转到首页</a>
+
+  <script>
+    const a = document.querySelector('a')
+    // 开启定时器
+    let num = 5;
+    let timeId = setInterval(() => {
+      num--;
+      a.innerHTML = `支付成功<span>${num}</span>秒钟之后跳转到首页`
+      if (num == 0) {
+        clearInterval(timeId)
+        // 跳转页面
+        location.href = "http://www.baidu.com"
+      }
+    }, 1000)
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <img src="./images/1.webp" alt="">
+
+  <script>
+    const img = document.querySelector('img')
+    img.src = './images/2.webp'
+    img.title = 'pink'
+
+    function getRandom(n, m) {
+      return Math.floor(Math.random() * (m - n + 1)) + n
+    }
+
+    const img2 = document.querySelector('img')
+    const rd = getRandom(1, 6)
+    img.src = `./images/${rd}.webp`
+
+  </script>
+</body>
+</html>

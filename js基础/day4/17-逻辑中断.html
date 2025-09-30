@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function fun(x, y) {
+      x = x || 0
+      y = y || 0
+      console.log(x + y);
+    }
+    fun(1, 2)
+    fun()
+
+    console.log((false && 22));
+    console.log(false && 3 + 5);
+    let age = 1
+    console.log(false && age++);
+    console.log(age); // age++ 不执行
+    
+    console.log(true && age++);
+    console.log(age);
+    
+    console.log(22 && 11 && 44); // 都是真 返回最后一个真值
+    console.log(11 || 22 || 33); // 返回第一个
+    
+    
+    
+  </script>
+</body>
+</html>

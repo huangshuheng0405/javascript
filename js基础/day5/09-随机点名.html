@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr = ['赵云', '黄忠', '关羽', '张飞', '马超', '刘备', '曹操']
+    let rd = Math.floor(Math.random() * arr.length)
+    document.write(arr[rd] + "<br>")
+
+    // 随机删除一个元素
+    document.write(arr + "<br>")
+    arr.splice(rd, 1)
+    document.write(arr)
+
+    // console.log(arr);
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let pink = {
+        name: "pink",
+        age: 18,
+        gender: "男",
+      }
+      console.log(pink)
+      console.log(typeof pink)
+
+      // 修改
+      pink.gender = "女"
+      console.log(pink)
+
+      // 删
+      delete pink.age
+      console.log(pink)
+
+      console.log(window.name)
+      let obj = {
+        "goods-name": "xiaomi 10",
+        num: "1111",
+        weight: "0.55kg",
+        address: "中国大陆",
+      }
+
+      obj.name = 'xiaomi 10 plus'
+      obj.color = 'pink'
+      console.log(obj); // 新加两个
+
+      // console.log(obj.goods-name);
+      
+      // 另一种属性
+      console.log(obj['goods-name']);
+      
+      
+    </script>
+  </body>
+</html>

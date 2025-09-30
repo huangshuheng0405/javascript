@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  width: 150px;
+  height: 30px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  margin: 20px auto;
+
+  li {
+    position: relative;
+    transition: all .1s;
+    margin-top: 15px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  
+    &:hover {
+      transform: scale(1.3);
+      // 让当前图片显示在最上方
+      z-index: 999;
+    }
+  
+    img {
+      width: 100px;
+    }
+  }
+
+}

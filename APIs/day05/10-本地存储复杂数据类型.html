@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    const obj = {
+      uname: 'pink',
+      age: 18,
+      gender: 'male'
+    }
+
+    // // 存储复杂数据类型  无法直接使用
+    // localStorage.setItem('obj', obj)
+
+    // console.log(localStorage.getItem('obj'));
+    
+    // 复杂数据类型存储必须转换为json字符串存储
+    localStorage.setItem('obj', JSON.stringify(obj))
+    // {"uname":"pink","age":18,"gender":"male"}
+    console.log(localStorage.getItem('obj'));
+    
+
+
+  </script>
+</body>
+</html>

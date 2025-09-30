@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <script>
+      // function outer() {
+      //   let a = 10
+      //   function fn () {
+      //     console.log(a);
+      //   }
+      //   fn()
+      // }
+      // // 闭包 = 外部函数的变量 + 内层函数
+      // outer()
+
+
+      function outer() {
+        let a = 10
+        function fn () {
+          console.log(a);
+        }
+        return fn
+      }
+      let f = outer()
+      f()
+      // 外部函数执行完毕后，变量a不会销毁，因为被内层函数引用着
+      // 这就是闭包
+
+      function counter() {
+        let count = 0
+        return function() {
+          count++
+          console.log(count);
+        }
+      }
+      let c = counter()
+      c() // 1
+      c() // 2
+      c() // 3
+      // count不会被
+    </script>
+  </body>
+</html>

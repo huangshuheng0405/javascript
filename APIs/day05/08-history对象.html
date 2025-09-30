@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>back</button>
+    <button>forward</button>
+
+    <a href="./01-bom.html">111</a>
+
+    <script>
+      const back = document.querySelector('button:first-child')
+      const forward = back.nextElementSibling
+
+      back.addEventListener('click', () => {
+        // 后退一步
+        history.back()
+      })
+
+      forward.addEventListener('click', () => {
+        // 前进一步
+        history.forward()
+      })
+    </script>
+  </body>
+</html>

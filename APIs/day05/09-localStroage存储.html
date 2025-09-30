@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    // 键值对 都要加引号
+    localStorage.setItem('uname', 'pink')
+    console.log(localStorage.getItem('uname'));
+    // localStorage.removeItem('uname')
+    // 有就是改 没有就是增
+    localStorage.setItem('uname', 'red')
+
+  
+    localStorage.setItem('age', 18)
+    // 本地类型只能存储字符串  数字也会转换成字符型
+    console.log(localStorage.getItem('age'));
+    
+  </script>
+</body>
+</html>

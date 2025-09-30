@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    console.log(/^java$/.test('java'))
+    console.log(/^java$/.test('JAVA')) // false
+    // 忽略大小写
+    console.log(/^java$/i.test('JAVA')) // true
+
+    const str = 'java是一门编程语言,java可以用来开发网站'
+    // replace 替换
+    // 用javaScript替换所有的java
+    console.log(str.replace('java', 'JavaScript')) // java是一门编程语言
+    // 全局替换
+    // g 全局替换 i 忽略大小写
+    console.log(str.replace(/java/ig, 'JavaScript')) // JavaScript是一门编
+
+    // | 或者
+    const color = 'red'
+    console.log(/red|blue|green/.test(color)) // true
+    console.log(/red|blue|green/.test('yellow')) // false
+
+    
+    
+  </script>
+</body>
+</html>

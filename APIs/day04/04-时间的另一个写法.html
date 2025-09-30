@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 300px;
+        height: 40px;
+        border: 1px solid pink;
+        text-align: center;
+        line-height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+
+    <script>
+      const div = document.querySelector('div')
+      const date = new Date()
+      // div.innerHTML = date.toLocaleString() // 2025/9/19 10:40:26 返回的格式是这样的
+      // div.innerHTML = date.toLocaleDateString() // 2025/9/19
+      div.innerHTML = date.toLocaleTimeString() //10:42:22
+    </script>
+  </body>
+</html>

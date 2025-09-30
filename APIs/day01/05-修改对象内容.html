@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">content</div>
+
+
+  <script>
+    const obj = {
+      name: 'pink'
+    }
+
+    console.log(obj.name);
+    
+
+    const box = document.querySelector('.box')
+    console.log(box.innerText)
+    
+    // 修改内容
+    // 不解析标签
+    box.innerText = '<strong>modified content</strong>'
+    console.log(box.innerText)
+
+
+    // innerHTML
+    // 识别标签
+    console.log(box.innerHTML);
+    box.innerHTML = '<strong>123</strong>'
+    
+
+  </script>
+</body>
+</html>

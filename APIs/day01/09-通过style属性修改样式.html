@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+
+  </div>
+
+  <script>
+    const box = document.querySelector('.box')
+    box.style.width = '300px'
+
+    // 多组单词 运用 小驼峰命名
+    box.style.backgroundColor = 'red'
+    box.style.border = '2px solid'
+    box.style.borderTop = '2px solid blue'
+  </script>
+</body>
+</html>

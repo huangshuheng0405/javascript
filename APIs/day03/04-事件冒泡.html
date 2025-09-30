@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .father {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+    }
+
+    .son {
+      width: 200px;
+      height: 200px;
+      background-color: purple;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="father">
+    <div class="son"></div>
+  </div>
+
+  <script>
+    const fa = document.querySelector('.father')
+    const son = document.querySelector('.son')
+
+    // 第三个参数是 是否使用捕获机制
+    fa.addEventListener('click', function() {
+      alert('father')
+    })
+    // 如果启用了捕获机制 那么先显示father再son (捕获)
+    // 否则就是先son再father (冒泡)
+    son.addEventListener('click', function(e) {
+      alert('son')
+      // 阻止流动传播
+      e.stopPropagation()
+      // 点击son后不会弹出father 也就是不会调用父级的点击事件 阻止冒泡
+    })
+
+    // 冒泡 只会依次向上调用父级元素的同类型事件
+  </script>
+</body>
+</html>

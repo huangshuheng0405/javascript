@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>useless</li>
+  </ul>
+
+  <script>
+    const ul = document.querySelector('ul')
+    // 和隐藏不也一样 删除节点直接从html中删除节点
+    ul.removeChild(ul.children[0])
+  </script>
+</body>
+</html>

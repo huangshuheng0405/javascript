@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      height: 3000px;
+    }
+  </style>
+
+</head>
+<body>
+  <script>
+    // 可赋值 一打开上方被卷去的部分就是 800像素
+    document.documentElement.scrollTop = 800
+    window.addEventListener('scroll', function() {
+      console.log(document.documentElement.scrollTop);
+      
+    })
+  </script>
+</body>
+</html>

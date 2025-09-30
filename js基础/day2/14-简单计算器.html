@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简单计算器</title>
+</head>
+<body>
+  <script>
+    let str = prompt("请输入表达式，例如：12+34 或 56-20")
+
+    let op
+    // 找运算符
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] >= '0' && str[i] <= '9') {
+        continue
+      } else {
+        op = str[i]
+        break
+      }
+    }
+
+    // 按运算符分割字符串，得到数字
+    let parts = str.split(op)
+    let num1 = Number(parts[0])
+    let num2 = Number(parts[1])
+
+    switch (op) {
+      case '+':
+        alert(`加法结果是 ${num1 + num2}`)
+        break
+      case '-':
+        alert(`减法结果是 ${num1 - num2}`)
+        break
+      case '*':
+        alert(`乘法结果是 ${num1 * num2}`)
+        break
+      case '/':
+        alert(`除法结果是 ${num1 / num2}`)
+        break
+      default:
+        alert(`输入的运算符无效`)
+    }
+  </script>
+</body>
+</html>

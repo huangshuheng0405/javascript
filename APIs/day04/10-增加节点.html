@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+  </ul>
+
+  <script>
+    // // 创建节点
+    // const div = document.createElement('div')
+    // // console.log(div);
+    // // 插在元素最后面
+    // document.body.appendChild(div)
+    
+
+    const ul = document.querySelector('ul')
+    const li = document.createElement('li')
+    li.innerHTML = '我是huang'
+    // ul.appendChild(li)
+    // 追加节点 (要插入的元素, 插在哪个元素前面)
+    ul.insertBefore(li, ul.children[0])
+  </script>
+</body>
+</html>
