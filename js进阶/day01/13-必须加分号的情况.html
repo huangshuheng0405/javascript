@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 立即执行函数要加
+      ;(function () {})()
+
+      // 使用数组的时候
+      // const str = [1, 2, 3]
+      const str = 'pink'
+      ;[1, 2, 3].map(function (item) {
+        console.log(item)
+      })
+      // 不加分号会导致数组和前面的连成一个整体
+    </script>
+  </body>
+</html>
