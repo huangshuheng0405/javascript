@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const pig = {
+        name: 'peiqi',
+        family: {
+          mather: 'mather',
+          father: 'Father',
+          sister: 'qiaozhi',
+        },
+        age: 18,
+      }
+
+      // 多级对象解构
+      // 要指明是哪个对象
+      const {
+        name,
+        family: { mather, father, sister },
+      } = pig
+      console.log(name, mather, father, sister)
+
+      const person = [
+        {
+          name: 'peiqi',
+          family: {
+            mather: 'mather',
+            father: 'Father',
+            sister: 'qiaozhi',
+          },
+          age: 18,
+        },
+      ]
+
+      // 解构对象数组
+      const [
+        {
+          name: name1,
+          family: { mather: m1, father: f1, sister: s1 },
+        },
+      ] = person
+      console.log(name1, m1, f1, s1);
+      
+    </script>
+  </body>
+</html>

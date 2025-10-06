@@ -12,7 +12,33 @@
     const [a, b, c, d] = [1, 2, 3]
     console.log(a, b, c, d); // 1 2 3 undefined
     
+    const [e, f, ...g] = [1, 2, 3, 4]
+    console.log(e, f, g); // 1， 2， [3, 4]  g是个真数组
     
+    // 防止undefined 传递  可以设置默认值
+    const [a1 = 0, b1 = 0] = [1, 2]
+    console.log(a1, b1);
+    
+
+    // 按需导入赋值
+    const [a2, b2, , d2] = [1, 2, 3, 4]
+    console.log(a2, b2, d2); // 1 2 4
+    
+
+    const arr = [1, 2, [3, 4]]
+    console.log(arr[0], arr[1], arr[2][0], arr[2][1]); // 1 2 3 4
+    console.log(arr[2]);  // [3, 4]
+    
+    // 多维数组解构
+    const arr1 = [1, 2, [3, 4]]
+    const [a3, b3, c3] = arr1
+    console.log(a3, b3, c3); // 1 2 [3, 4]
+    
+
+    const [a4, b4, [c4, d4]] = [1, 2, [3, 4]]
+    console.log(a4, b4, c4, d4); // 1 2 3 4
+    
+
   </script>
 </body>
 </html>  
