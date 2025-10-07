@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = [10, 20, 30]
+      const tmp = arr.filter((item, index) => {
+        return item >= 20
+      })
+      console.log(tmp)
+      // 返回一个新数组
+
+      // 过滤筛选
+      document.querySelector('.filter').addEventListener('click', (e) => {
+        const { tagName, dataset } = e.target
+        if (tagName === 'A') {
+          console.log(1);
+          
+        }
+      })
+    </script>
+  </body>
+</html>
