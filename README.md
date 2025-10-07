@@ -1955,4 +1955,683 @@ for(let k in obj) {
 
 ### 键盘事件
 
-key
+`keydown`键盘按下触发
+
+`keyup`键盘抬起触发
+
+### 焦点事件
+
+`focus`获得焦点
+
+`blur`失去焦点
+
+## 事件对象
+
+任意事件类型被触发时与事件相关的信息会被以对象的形式记录下来，我们称这个对象为事件对象。
+
+```html
+<body>
+  <h3>事件对象</h3>
+  <p>任意事件类型被触发时与事件相关的信息会被以对象的形式记录下来，我们称这个对象为事件对象。</p>
+  <hr>
+  <div class="box"></div>
+  <script>
+    // 获取 .box 元素
+    const box = document.querySelector('.box')
+
+    // 添加事件监听
+    box.addEventListener('click', function (e) {
+      console.log('任意事件类型被触发后，相关信息会以对象形式被记录下来...');
+
+      // 事件回调函数的第1个参数即所谓的事件对象
+      console.log(e)
+    })
+  </script>
+</body>
+```
+
+事件回调函数的【第1个参数】即所谓的事件对象，通常习惯性的将这个对数命名为 `event`、`ev` 、`ev` 。
+
+1. `event.type`当前事件类型，例如`click, keydown, submit`
+2. `event.clientX/Y`光标相对浏览器窗口的位置
+3. `event.offsetX/Y`光标相对于当前`DOM`元素的位置
+4. `event.target`触发事件的**原始元素**
+5. `preventDufault`阻止事件的默认行为
+6. `stopPropagation`阻止事件**冒泡**
+
+## 环境对象
+
+环境对象指的是函数内部特殊的变量 `this` ，它代表着当前函数运行时所处的环境。
+
+```html
+<script>
+  // 声明函数
+  function sayHi() {
+    // this 是一个变量
+    console.log(this);
+  }
+
+  // 声明一个对象
+  let user = {
+    name: '张三',
+    sayHi: sayHi // 此处把 sayHi 函数，赋值给 sayHi 属性
+  }
+  
+  let person = {
+    name: '李四',
+    sayHi: sayHi
+  }
+
+  // 直接调用
+  sayHi() // window
+  window.sayHi() // window
+
+  // 做为对象方法调用
+  user.sayHi()// user
+	person.sayHi()// person
+</script>
+```
+
+结论：
+
+1. `this` 本质上是一个变量，数据类型为对象
+2. 函数的调用方式不同 `this` 变量的值也不同
+3. 【谁调用 `this` 就是谁】是判断 `this` 值的粗略规则
+4. 函数直接调用时实际上 `window.sayHi()` 所以 `this` 的值为 `window`
+
+## 回调函数
+
+如果将函数 A 做为参数传递给函数 B 时，我们称函数 A 为回调函数。
+
+```html
+<script>
+  // 声明 foo 函数
+  function foo(arg) {
+    console.log(arg);
+  }
+
+  // 普通的值做为参数
+  foo(10);
+  foo('hello world!');
+  foo(['html', 'css', 'javascript']);
+
+  function bar() {
+    console.log('函数也能当参数...');
+  }
+  // 函数也可以做为参数！！！！
+  foo(bar);
+</script>
+```
+
+函数 `bar` 做参数传给了 `foo` 函数，`bar` 就是所谓的回调函数了！！！
+
+我们回顾一下间歇函数 `setInterval` 
+
+```html
+<script>
+	function fn() {
+    console.log('我是回调函数...');
+  }
+  // 调用定时器
+  setInterval(fn, 1000);
+</script>
+```
+
+`fn` 函数做为参数传给了 `setInterval` ，这便是回调函数的实际应用了，结合刚刚学习的函数表达式上述代码还有另一种更常见写法。
+
+```html
+<script>
+  // 调用定时器，匿名函数做为参数
+  setInterval(function () {
+    console.log('我是回调函数...');
+  }, 1000);
+</script>
+```
+
+结论：
+
+1. 回调函数本质还是函数，只不过把它当成参数使用
+2. 使用匿名函数做为回调函数比较常见
+
+## 事件流
+
+![event](D:\JavaScript\assets\event.png)
+
+简言之，捕获阶段是【从父到子】的传导过程，冒泡阶段是【从子向父】的传导过程。
+
+### 捕获和冒泡
+
+```html
+<body>
+  <h3>事件流</h3>
+  <p>事件流是事件在执行时的底层机制，主要体现在父子盒子之间事件的执行上。</p>
+  <div class="outer">
+    <div class="inner">
+      <div class="child"></div>
+    </div>
+  </div>
+  <script>
+    // 获取嵌套的3个节点
+    const outer = document.querySelector('.outer');
+    const inner = document.querySelector('.inner');
+    const child = document.querySelector('.child');
+		
+    // html 元素添加事件
+    document.documentElement.addEventListener('click', function () {
+      console.log('html...')
+    })
+		
+    // body 元素添加事件
+    document.body.addEventListener('click', function () {
+      console.log('body...')
+    })
+
+    // 外层的盒子添加事件
+    outer.addEventListener('click', function () {
+      console.log('outer...')
+    })
+    
+    // 中间的盒子添加事件
+    outer.addEventListener('click', function () {
+      console.log('inner...')
+    })
+    
+    // 内层的盒子添加事件
+    outer.addEventListener('click', function () {
+      console.log('child...')
+    })
+  </script>
+</body>
+```
+
+执行上述代码后发现，当单击事件触发时，其祖先元素的单击事件也【相继触发】，这是为什么呢？
+
+结合事件流的特征，我们知道当某个元素的事件被触发时，事件总是会先经过其祖先才能到达当前元素，然后再由当前元素向祖先传递，事件在流动的过程中遇到相同的事件便会被触发。
+
+再来关注一个细节就是事件相继触发的【执行顺序】，事件的执行顺序是可控制的，即可以在捕获阶段被执行，也可以在冒泡阶段被执行。
+
+如果事件是在冒泡阶段执行的，我们称为冒泡模式，它会先执行子盒子事件再去执行父盒子事件，默认是冒泡模式。
+
+如果事件是在捕获阶段执行的，我们称为捕获模式，它会先执行父盒子事件再去执行子盒子事件。
+
+```html
+<body>
+  <h3>事件流</h3>
+  <p>事件流是事件在执行时的底层机制，主要体现在父子盒子之间事件的执行上。</p>
+  <div class="outer">
+    <div class="inner"></div>
+  </div>
+  <script>
+    // 获取嵌套的3个节点
+    const outer = document.querySelector('.outer')
+    const inner = document.querySelector('.inner')
+
+    // 外层的盒子
+    outer.addEventListener('click', function () {
+      console.log('outer...')
+    }, true) // true 表示在捕获阶段执行事件
+    
+    // 中间的盒子
+    outer.addEventListener('click', function () {
+      console.log('inner...')
+    }, true)
+  </script>
+</body>
+```
+
+结论：
+
+1. `addEventListener` 第3个参数决定了事件是在捕获阶段触发还是在冒泡阶段触发
+2. `addEventListener` 第3个参数为  `true` 表示捕获阶段触发，`false` 表示冒泡阶段触发，默认值为 `false`
+3. 事件流只会在父子元素具有相同事件类型时才会产生影响
+4. 绝大部分场景都采用默认的冒泡模式（其中一个原因是早期 IE 不支持捕获）
+
+### 阻止冒泡
+
+阻止冒泡是指阻断事件的流动，保证事件只在当前元素被执行，而不再去影响到其对应的祖先元素。
+
+```html
+<body>
+  <h3>阻止冒泡</h3>
+  <p>阻止冒泡是指阻断事件的流动，保证事件只在当前元素被执行，而不再去影响到其对应的祖先元素。</p>
+  <div class="outer">
+    <div class="inner">
+      <div class="child"></div>
+    </div>
+  </div>
+  <script>
+    // 获取嵌套的3个节点
+    const outer = document.querySelector('.outer')
+    const inner = document.querySelector('.inner')
+    const child = document.querySelector('.child')
+
+    // 外层的盒子
+    outer.addEventListener('click', function () {
+      console.log('outer...')
+    })
+
+    // 中间的盒子
+    inner.addEventListener('click', function (ev) {
+      console.log('inner...')
+
+      // 阻止事件冒泡
+      ev.stopPropagation()
+    })
+
+    // 内层的盒子
+    child.addEventListener('click', function (ev) {
+      console.log('child...')
+
+      // 借助事件对象，阻止事件向上冒泡
+      ev.stopPropagation()
+    })
+  </script>
+</body>
+```
+
+结论：事件对象中的 `ev.stopPropagation` 方法，专门用来阻止事件冒泡。
+
+## 事件委托
+
+结论：事件对象中的 `ev.stopPropagation` 方法，专门用来阻止事件冒泡。
+
+```html
+<script>
+  // 假设页面中有 10000 个 button 元素
+  const buttons = document.querySelectorAll('table button');
+
+  for(let i = 0; i <= buttons.length; i++) {
+    // 为 10000 个 button 元素添加了事件
+    buttons.addEventListener('click', function () {
+      // 省略具体执行逻辑...
+    })
+  }
+</script>
+```
+
+利用事件流的特征，可以对上述的代码进行优化，事件的的冒泡模式总是会将事件流向其父元素的，如果父元素监听了相同的事件类型，那么父元素的事件就会被触发并执行，正是利用这一特征对上述代码进行优化，如下代码所示：
+
+```html
+<script>
+  // 假设页面中有 10000 个 button 元素
+  let buttons = document.querySelectorAll('table button');
+  
+  // 假设上述的 10000 个 buttom 元素共同的祖先元素是 table
+  let parents = document.querySelector('table');
+  parents.addEventListener('click', function () {
+    console.log('点击任意子元素都会触发事件...');
+  })
+</script>
+```
+
+我们的最终目的是保证只有点击 button 子元素才去执行事件的回调函数，如何判断用户点击是哪一个子元素呢？
+
+事件对象中的属性 `target` 或 `srcElement`属性表示真正触发事件的元素，它是一个元素类型的节点。
+
+```html
+<script>
+  // 假设页面中有 10000 个 button 元素
+  const buttons = document.querySelectorAll('table button')
+  
+  // 假设上述的 10000 个 buttom 元素共同的祖先元素是 table
+  const parents = document.querySelector('table')
+  parents.addEventListener('click', function (ev) {
+    // console.log(ev.target);
+    // 只有 button 元素才会真正去执行逻辑
+    if(ev.target.tagName === 'BUTTON') {
+      // 执行的逻辑
+    }
+  })
+</script>
+```
+
+优化过的代码只对祖先元素添加事件监听，相比对 10000 个元素添加事件监听执行效率要高许多！！！
+
+## 其他事件
+
+### 页面加载事件
+
+加载外部资源（如图片、外联CSS和JavaScript等）加载完毕时触发的事件
+
+有些时候需要等页面资源全部处理完了做一些事情
+
+**事件名：load**
+
+监听页面所有资源加载完毕：
+
+~~~javascript
+window.addEventListener('load', function() {
+    // xxxxx
+})
+~~~
+
+### 元素滚动事件
+
+滚动条在滚动的时候持续触发的事件
+
+~~~javascript
+window.addEventListener('scroll', function() {
+    // xxxxx
+})
+~~~
+
+### 页面尺寸事件
+
+会在窗口尺寸改变的时候触发事件：
+
+~~~javascript
+window.addEventListener('resize', function() {
+    // xxxxx
+})
+~~~
+
+## 元素尺寸与位置
+
+获取元素的自身宽高、包含元素自身设置的宽高、`padding`、`border`
+
+`offsetWidth`和`offsetHeight  `
+
+获取出来的是数值,方便计算
+
+注意: 获取的是可视宽高, 如果盒子是隐藏的,获取的结果是0
+
+## 日期对象
+
+掌握 Date 日期对象的使用，动态获取当前计算机的时间。
+
+
+ECMAScript 中内置了获取系统时间的对象 Date，使用 Date 时与之前学习的内置对象 console 和 Math 不同，它需要借助 new 关键字才能使用。
+
+### 实例化
+
+```js
+  // 1. 实例化
+  // const date = new Date(); // 系统默认时间
+  const date = new Date('2020-05-01') // 指定时间
+  // date 变量即所谓的时间对象
+
+  console.log(typeof date)
+```
+
+### 方法
+
+```js
+  // 1. 实例化
+ const date = new Date();
+ // 2. 调用时间对象方法
+ // 通过方法分别获取年、月、日，时、分、秒
+ const year = date.getFullYear(); // 四位年份
+ const month = date.getMonth(); // 0 ~ 11
+```
+
+`getFullYear` 获取四位年份
+
+`getMonth` 获取月份，取值为 `0 ~ 11`
+
+`getDate `获取月份中的每一天，不同月份取值也不相同
+
+`getDay `获取星期，取值为 `0 ~ 6`
+
+`getHours` 获取小时，取值为 `0 ~ 23`
+
+`getMinutes` 获取分钟，取值为 `0 ~ 59`
+
+`getSeconds `获取秒，取值为` 0 ~ 59`
+
+### 时间戳
+
+时间戳是指1970年01月01日00时00分00秒起至现在的总秒数或毫秒数，它是一种特殊的计量时间的方式。
+
+注：ECMAScript 中时间戳是以毫秒计的。
+
+~~~javascript
+    // 1. 实例化
+  const date = new Date()
+  // 2. 获取时间戳
+  console.log(date.getTime())
+// 还有一种获取时间戳的方法
+  console.log(+new Date())
+  // 还有一种获取时间戳的方法
+  console.log(Date.now())
+
+~~~
+
+
+获取时间戳的方法，分别为 getTime 和 Date.now 和  +new Date()
+
+## DOM节点
+
+### 插入节点
+
+在已有的 DOM 节点中插入新的 DOM 节点时，需要关注两个关键因素：首先要得到新的 DOM 节点，其次在哪个位置插入这个节点。
+
+如下代码演示：
+
+```html
+<body>
+  <h3>插入节点</h3>
+  <p>在现有 dom 结构基础上插入新的元素节点</p>
+  <hr>
+  <!-- 普通盒子 -->
+  <div class="box"></div>
+  <!-- 点击按钮向 box 盒子插入节点 -->
+  <button class="btn">插入节点</button>
+  <script>
+    // 点击按钮，在网页中插入节点
+    const btn = document.querySelector('.btn')
+    btn.addEventListener('click', function () {
+      // 1. 获得一个 DOM 元素节点
+      const p = document.createElement('p')
+      p.innerText = '创建的新的p标签'
+      p.className = 'info'
+      
+      // 复制原有的 DOM 节点
+      const p2 = document.querySelector('p').cloneNode(true)
+      p2.style.color = 'red'
+
+      // 2. 插入盒子 box 盒子
+      document.querySelector('.box').appendChild(p)
+      document.querySelector('.box').appendChild(p2)
+    })
+  </script>
+</body>
+```
+
+结论：
+
+- `createElement` 动态创建任意 DOM 节点
+
+- `cloneNode` 复制现有的 DOM 节点，传入参数 true 会复制所有子节点
+
+- `appendChild` 在末尾（结束标签前）插入节点
+
+再来看另一种情形的代码演示：
+
+```html
+<body>
+  <h3>插入节点</h3>
+  <p>在现有 dom 结构基础上插入新的元素节点</p>
+	<hr>
+  <button class="btn1">在任意节点前插入</button>
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+  <script>
+    // 点击按钮，在已有 DOM 中插入新节点
+    const btn1 = document.querySelector('.btn1')
+    btn1.addEventListener('click', function () {
+
+      // 第 2 个 li 元素
+      const relative = document.querySelector('li:nth-child(2)')
+
+      // 1. 动态创建新的节点
+      const li1 = document.createElement('li')
+      li1.style.color = 'red'
+      li1.innerText = 'Web APIs'
+
+      // 复制现有的节点
+      const li2 = document.querySelector('li:first-child').cloneNode(true)
+      li2.style.color = 'blue'
+
+      // 2. 在 relative 节点前插入
+      document.querySelector('ul').insertBefore(li1, relative)
+      document.querySelector('ul').insertBefore(li2, relative)
+    })
+  </script>
+</body>
+```
+
+结论：
+
+- `createElement` 动态创建任意 DOM 节点
+
+- `cloneNode` 复制现有的 DOM 节点，传入参数 true 会复制所有子节点
+
+- `insertBefore` 在父节点中任意子节点之前插入新节点
+
+### 删除节点
+
+删除现有的 DOM 节点，也需要关注两个因素：首先由父节点删除子节点，其次是要删除哪个子节点。
+
+```html
+<body>
+  <!-- 点击按钮删除节点 -->
+  <button>删除节点</button>
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Web APIs</li>
+  </ul>
+
+  <script>
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', function () {
+      // 获取 ul 父节点
+      let ul = document.querySelector('ul')
+      // 待删除的子节点
+      let lis = document.querySelectorAll('li')
+
+      // 删除节点
+      ul.removeChild(lis[0])
+    })
+  </script>
+</body>
+```
+
+结论：`removeChild` 删除节点时一定是由父子关系。
+
+### 查找节点
+
+DOM 树中的任意节点都不是孤立存在的，它们要么是父子关系，要么是兄弟关系，不仅如此，我们可以依据节点之间的关系查找节点。
+
+#### 父子关系
+
+```html
+<body>
+  <button class="btn1">所有的子节点</button>
+  <!-- 获取 ul 的子节点 -->
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript 基础</li>
+    <li>Web APIs</li>
+  </ul>
+  <script>
+    const btn1 = document.querySelector('.btn1')
+    btn1.addEventListener('click', function () {
+      // 父节点
+      const ul = document.querySelector('ul')
+
+      // 所有的子节点
+      console.log(ul.childNodes)
+      // 只包含元素子节点
+      console.log(ul.children)
+    })
+  </script>
+</body>
+```
+
+结论：
+
+- `childNodes` 获取全部的子节点，回车换行会被认为是空白文本节点
+- `children` 只获取元素类型节点
+
+```html
+<body>
+  <table>
+    <tr>
+      <td width="60">序号</td>
+      <td>课程名</td>
+      <td>难度</td>
+      <td width="80">操作</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><span>HTML</span></td>
+      <td>初级</td>
+      <td><button>变色</button></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><span>CSS</span></td>
+      <td>初级</td>
+      <td><button>变色</button></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><span>Web APIs</span></td>
+      <td>中级</td>
+      <td><button>变色</button></td>
+    </tr>
+  </table>
+  <script>
+    // 获取所有 button 节点，并添加事件监听
+    const buttons = document.querySelectorAll('table button')
+    for(let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function () {
+        // console.log(this.parentNode); // 父节点 td
+        // console.log(this.parentNode.parentNode); // 爷爷节点 tr
+        this.parentNode.parentNode.style.color = 'red'
+      })
+    }
+  </script>
+</body>
+```
+
+结论：`parentNode` 获取父节点，以相对位置查找节点，实际应用中非常灵活。
+
+#### 兄弟关系
+
+```html
+<body>
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript 基础</li>
+    <li>Web APIs</li>
+  </ul>
+  <script>
+    // 获取所有 li 节点
+    const lis = document.querySelectorAll('ul li')
+
+    // 对所有的 li 节点添加事件监听
+    for(let i = 0; i < lis.length; i++) {
+      lis[i].addEventListener('click', function () {
+        // 前一个节点
+        console.log(this.previousSibling)
+        // 下一下节点
+        console.log(this.nextSibling)
+      })
+    }
+  </script>
+</body>
+```
+
+结论：
+
+- `previousSibling` 获取前一个节点，以相对位置查找节点，实际应用中非常灵活。
+- `nextSibling` 获取后一个节点，以相对位置查找节点，实际应用中非常灵活。
+
+api第五天
