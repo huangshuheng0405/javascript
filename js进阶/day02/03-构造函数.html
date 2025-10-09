@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
+  <script>
+    function Pig(uname, age) {
+      this.name = uname
+      this.age = age
+    }
+
+    console.log(new Pig('peiqi', 18));
+    obj = new Pig('qiaozhi', 19)
+    console.log(obj);
+
+
+
+    function Goods(name, price, count) {
+      this.name = name
+      this.price = price
+      this.count = count
+    }
+    const mi = new Goods('xiaomi', 1999, 20)
+    console.log(mi);
+
+
+    // 静态成员
+    function Person() {
+
+    }
+    Person.eyes = 2
+    Person.walk = function() {
+      console.log('walk');
+      return 3
+      
+    }
+    
+    console.log(Person.eyes);
+    console.log(Person.walk());
+    // 静态成员只能构造函数访问
+    
+    
+  </script>
+</body>
+</html>

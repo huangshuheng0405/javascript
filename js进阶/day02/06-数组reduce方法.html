@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    const arr = [1, 3, 5]
+
+    // 没有初始值
+    // reduce(上一次值， 当前值{}， 初始值)
+    const total = arr.reduce(function (prev, current) {
+      return prev + current
+    })
+    console.log(total);
+
+    const total2 = arr.reduce(function(prev, current) {
+      return prev + current
+    }, 10)
+    console.log(total2);
+    
+    // 箭头函数写法
+    const total3 = arr.reduce((prev, current) => prev + current, 20)
+    console.log(total3);
+    
+    
+  </script>
+</body>
+</html>
