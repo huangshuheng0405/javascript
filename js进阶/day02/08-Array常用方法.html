@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = ['red', 'blue', 'green']
+      const res = arr.find(function (item) {
+        return item === 'blue'
+      })
+
+      console.log(res);
+      
+      const arr1 = [
+        {
+          name: 'xiaomi',
+          price: 1999
+        },
+        {
+          name: 'huawei',
+          price: 1999
+        },
+        {
+          name: 'vivo',
+          price: 1999
+        }
+      ]
+
+      const vivo = arr1.find(item => {
+        console.log(item.name);
+        return item.name === 'vivo'
+      })
+      console.log(vivo);// 返回值是一个对象
+      
+
+
+      // every 判断每一个是否都符合条件  都符合返回true
+      const arr2 = [10, 20, 230, 30]
+      console.log(arr2.every(item => item >= 20));
+
+      // some 只要有一项满足条件即可
+      console.log(arr2.some(item => item > 30));
+      
+      
+   
+   </script>
+  </body>
+</html>

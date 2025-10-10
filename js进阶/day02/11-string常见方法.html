@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    const str = 'pink,red'
+    const arr = str.split(',') // 将字符串转换为数组
+    console.log(arr);
+
+    const str1 = '2025-10-10'
+    const arr1 = str1.split('-')
+    console.log(arr1);
+    
+    // 字符串的截取 substring(start, end)
+    const str2 = 'helloworld'
+    console.log(str2.substring(2,6)); // 左闭右开
+    
+    // startsWith 判断是否以某个字符串开头
+    const str3 = 'pink,red, blue'
+    console.log(str3.startsWith('pink'));
+    console.log(str3.startsWith('red', 5)); // 第二个参数是查找的起始位置
+    
+    // includes
+    console.log(str3.includes('pink'));
+    console.log(str3.includes('Pink')); // 区分大小写
+    console.log(str3.includes('pink', 1)); // 第二个参数是开始查找的起始位置
+    
+
+
+  </script>
+</body>
+</html>
