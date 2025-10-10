@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    let that
+    let that2
+    function Star(name) {
+      that = this
+      this.uname = name
+    }
+    // 原型对象里面的函数this指向的还是实例对象 ldh
+    Star.prototype.sing = function () {
+      that2 = this
+      console.log("sing");
+    }
+
+    const ldh = new Star('liudehua')
+    console.log(that === ldh); // ture
+    
+    ldh.sing()
+    console.log(that2 === ldh);
+    
+
+  </script>
+</body>
+</html>

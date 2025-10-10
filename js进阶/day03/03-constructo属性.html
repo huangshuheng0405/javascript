@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+
+    <script>
+      function Star() {
+
+      }
+      // Star.prototype.sing = function () {
+      //   console.log('sing');
+      // }
+      // Star.prototype.dance = function () {
+      //   console.log('dance');
+      // }
+      console.log(Star.prototype);
+      
+      Star.prototype = {
+        // 重新指回这个原型对象
+        constructor: Star,
+        sing: function () {
+          console.log('sing');
+        },
+        dance: function () {
+          console.log(dance);
+        }
+      }
+      console.log(Star.prototype);
+      
+      const ldh = new Star('ldh')
+      console.log(Star.prototype.constructor === Star); // true
+      
+    </script>
+  </body>
+</html>

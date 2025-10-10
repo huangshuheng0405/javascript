@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = new Array(1, 2)
+      console.log(arr);
+
+
+      const arr1 = [1, 2, 3, 4]
+      Array.prototype.max = function () {
+        return Math.max(...this)
+        // 原型函数里面的this 指向 实例对象 也就是arr1
+      }
+
+      console.log(arr1.max());
+      console.log([2, 5, 9].max());
+      
+      Array.prototype.sum = function () {
+        return this.reduce( (previous, current) => previous + current, 0)
+      }
+      
+      console.log([1, 2, 3, 4].sum());
+      
+      
+    </script>
+  </body>
+</html>

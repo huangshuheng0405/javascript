@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Star(uname, age) {
+        ;(this.name = uname), (this.age = age)
+        this.sing = function () {
+          console.log('sing song')
+        }
+      }
+      Star.prototype.sing2 = function () {
+        console.log("sing2")
+      }
+
+      const liu = new Star('liudehua', 55)
+      const zhang = new Star('zhangxueyou', 60)
+      console.log(liu)
+      liu.sing()
+
+      console.log(liu.sing === zhang.sing) // false
+      // 存在内存浪费问题
+
+      console.log(Star.prototype)
+
+      liu.sing2()
+      console.log(liu.sing2 === zhang.sing2); // true
+      
+      // 公共属性写到 构造函数上
+      // 公共方法写到 原型对象上
+    </script>
+  </body>
+</html>
