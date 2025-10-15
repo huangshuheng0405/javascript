@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const obj = {
+        uname: 'pink',
+        age: 18,
+        hobby: ['乒乓球', '足球'],
+        family: {
+          baby: 'pink2',
+        },
+      }
+
+      // 把对象转换为 JSON 字符串
+      console.log(JSON.stringify(obj));
+      const o = JSON.parse(JSON.stringify(obj))
+      console.log(o);
+      o.family.baby = 'pink5'
+
+      console.log(obj);
+
+      // 有局限 无法处理 Date RegExp function undefined
+      
+      
+    </script>
+  </body>
+</html>

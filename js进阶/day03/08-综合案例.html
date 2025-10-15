@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>面向对象封装消息提示</title>
+  <style>
+    .modal {
+      width: 300px;
+      min-height: 100px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      background-color: #fff;
+    }
+
+    .modal .header {
+      line-height: 40px;
+      padding: 0 10px;
+      position: relative;
+      font-size: 20px;
+    }
+
+    .modal .header i {
+      font-style: normal;
+      color: #999;
+      position: absolute;
+      right: 15px;
+      top: -2px;
+      cursor: pointer;
+    }
+
+    .modal .body {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .modal .footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+    }
+
+    .modal .footer a {
+      padding: 3px 8px;
+      background: #ccc;
+      text-decoration: none;
+      color: #fff;
+      border-radius: 2px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .modal .footer a.submit {
+      background-color: #369;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* 必须低于模态框的999  要在他之下 */
+      z-index: 998;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="delete">删除</button>
+  <button id="login">登录</button>
+
+  <!-- <div class="modal">
+    <div class="header">温馨提示 <i>x</i></div>
+    <div class="body">您没有删除权限操作</div>
+  </div> -->
+
+
+  <script>
+    function Modal(title = '', message = '') {
+      // 创建遮罩层
+      this.backdrop = document.createElement('div')
+      this.backdrop.className = 'modal-backdrop'
+
+      // 盒子是公共的 所以用this
+      // 创建模态框
+      this.modalBox = document.createElement('div')
+      this.modalBox.className = 'modal'
+      this.modalBox.innerHTML = `
+        <div class="modal">
+          <div class="header">${title} <i>x</i></div>
+          <div class="body">${message}</div>
+        </div>
+      `
+
+      console.log(this.modalBox);
+      
+    }
+
+    // new Modal('温馨提示', '您没有权限删除')
+    // new Modal('友情提示', '您还没有登录')
+
+    Modal.prototype.open = function () {
+      const existingModal = document.querySelector('.modal')
+      const existingBackdrop = document.querySelector('.modal-backdrop')
+      // 如果页面有 就先删除
+      existingModal && box.remove()
+      existingBackdrop && existingBackdrop.remove()
+
+      // 将遮罩层添加到baby
+      document.body.append(this.backdrop)
+      // 在添加模态框 会在遮罩层之上
+      document.body.append(this.modalBox)
+      this.modalBox.querySelector('i').addEventListener('click', () => {
+        // 箭头函数没有this 就用指向上一级的this
+        // 这个this 指向 modal
+        this.close()
+      })
+
+    }
+
+    Modal.prototype.close = function() {
+      // 同时关闭模态框和遮罩层
+      this.modalBox.remove()
+      this.backdrop.remove()
+    }
+
+    document.querySelector('#delete').addEventListener('click', function() {
+      const del = new Modal('温馨提示', '您没有权限删除')
+      del.open()
+    })
+
+    document.querySelector('#login').addEventListener('click', function() {
+      const login = new Modal('友情提示', '您还没有登录')
+      login.open()
+    })
+
+    // 遮罩层 z-index 998 所以点不到按钮
+  </script>
+</body>
+
+</html>

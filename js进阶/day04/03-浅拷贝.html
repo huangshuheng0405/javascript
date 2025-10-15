@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    const obj = {
+      uanme: 'pink',
+      age: 18,
+      family: {
+        baby: 'pink2'
+      }
+    }
+
+    // 浅拷贝
+    // const o = { ...obj }
+    // console.log(o);
+    // o.age = 20
+    // console.log(o);
+    // console.log(obj);
+    
+    const o = {}
+    Object.assign(o, obj);
+    console.log(o);
+    o.age = 20
+    o.family.baby = '老pink'
+    console.log(o);
+    console.log(obj);
+    
+    
+  </script>
+</body>
+</html>

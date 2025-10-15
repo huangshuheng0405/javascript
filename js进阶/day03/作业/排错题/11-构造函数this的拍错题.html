@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 以下代码13行的this值是 window，说法对吗，为什么
+    function Star(name) {
+      console.log(this);
+      this.name = name
+      this.sing = function() {
+        console.log('唱歌');
+      }
+    }
+
+    const ldh = new Star('刘德华') 
+    // 是 ldh this 是构造函数的
+    // this 是新创建的 Star 实例对象 不是window
+
+    Star()
+    // 直接调用才是window
+  </script>
+</body>
+</html>

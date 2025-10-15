@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    const obj = {
+      name: 'pink'
+    }
+    function fn(x, y) {
+      console.log(this);
+      console.log(x + y);
+      
+    }
+
+    // 改变this指向
+    fn.call(obj, 1, 2)
+  </script>
+</body>
+</html>

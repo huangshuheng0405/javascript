@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>click</button>
+
+  <script>
+    console.log(this);
+    function fn () {
+      console.log(this);
+    }
+    fn()
+
+    setTimeout(function () {
+      console.log(this);
+      
+    }, 1000)
+    // 都是 window 调用
+     
+    document.querySelector('button').addEventListener('click', function () {
+      console.log(this);
+      
+    })
+
+    const obj = {
+      fun: function() {
+        console.log(this);
+        
+      }
+    }
+    obj.fun()
+
+    // 普通函数 谁调用我 指向谁
+  </script>
+</body>
+</html>

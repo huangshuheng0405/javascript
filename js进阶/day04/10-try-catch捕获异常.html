@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>123</p>
+    <script>
+      function fn() {
+        try {
+          const p = document.querySelector('p')
+          p.style.color = 'red'
+        } catch (err) {
+          console.log(err.message);
+          console.log(11);
+          
+          
+        } finally {
+          // 不管程序对不对 一定会执行这段代码
+          alert('111')
+        }
+        // 不会中断程序
+        console.log(12);
+        
+      }
+      fn()
+    </script>
+  </body>
+</html>
