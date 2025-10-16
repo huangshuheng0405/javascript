@@ -11,6 +11,7 @@
   <script>
     // 下面代码会打印 1 2 3 4，是否有问题
     try {
+      debugger
       document.querySelector('box').addEventListener('click', function(){})
       console.log(1);
     } catch(err) {
@@ -20,6 +21,7 @@
     }
 
     console.log(4);
+    // 2 3 4
   </script>
 </body>
 </html>

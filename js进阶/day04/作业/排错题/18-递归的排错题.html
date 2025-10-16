@@ -12,9 +12,18 @@
     document.querySelector('.box').innerHTML = new Date().toLocaleString()
     function getCurrentTime() {
       document.querySelector('.box').innerHTML = new Date().toLocaleString()
+      // 只有代码执行完毕后 才会设置下一个定时器
       setTimeout(getCurrentTime, 1000)
     }
     getCurrentTime()
+
+
+    // 执行流程
+    // getc 开始执行
+    // getc 执行完毕耗时t秒
+    // 立即设置定时器 等到1000毫秒后 在执行下一次getc
+    // 下一次执行时间 上次开始时间 + t + 1000ms
+    // 回调函数执行完毕后 才会设置并启动定时
   </script>
 </body>
 </html>
