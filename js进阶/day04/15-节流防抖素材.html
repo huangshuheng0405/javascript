@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 500px;
+        height: 500px;
+        background-color: #ccc;
+        color: #fff;
+        text-align: center;
+        font-size: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box"></div>
+    <script src="./lodash.min.js"></script>
+    <script>
+      const box = document.querySelector('.box')
+      let i = 1
+      function mouseMove() {
+        box.innerHTML = i++
+        // 如果邨彩大量消耗性能的代码 比如 dom 事件 或者数据处理 可能造成 卡顿
+      }
+
+      // box.addEventListener('mousemove', mouseMove)
+
+      // lodash库
+      // box.addEventListener('mousemove', _.debounce(mouseMove, 200))
+
+      // 手写防抖函数
+      // 核心是利用 setTimeout 定时器来实现
+      // 声明定时器变量
+      // 每次鼠标移动的时候都先判断是否有定时器 如果有先清除以前的定时器
+      // 如果没有定时器 则开启定时器 存入到定时器变量里面
+      // 定时器里面写函数调用
+
+      function debounce(fn, t) {
+        let timer
+        return function () {
+          if (timer) {
+            clearTimeout(timer)
+          }
+          timer = setTimeout(function () {
+            fn()
+          }, t)
+        }
+      }
+      // 防抖 执行完函数后 等待时间过后才能再次执行
+      box.addEventListener('mousemove', debounce(mouseMove, 100))
+      // 匿名函数引用了timer 形成了一个闭包 所以timer不会被回收 确保多次事件触发之间能正确的保存和更新定时器id
+
+    </script>
+  </body>
+</html>

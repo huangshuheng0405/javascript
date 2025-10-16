@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const obj = {
+        age: 18,
+      }
 
-  <script>
-    const obj = {
-      age: 18
-    }
+      function fn(x, y) {
+        console.log(this)
+        console.log(x + y);
+        
+      }
+      // 也能改变 this 指向
+      fn.apply(obj, [1, 2])
+      // 传入的参数必须是 数组
+      // 返回值 本身就是在调用函数 所以返回值就是函数的返回值
 
-    function fn() {
-      console.log(this);
-    }
-    // 也能改变 this 指向
-    fn.apply(obj)
-  </script>
-</body>
+      // 使用场景
+      const max = Math.max(1, 2, 3)
+      console.log(max);
+
+      const arr = [1, 21, 12]
+      const max1 = Math.max.apply(null, arr)
+      console.log(max1);
+
+      console.log(Math.max(...arr));
+      
+      
+      
+    </script>
+  </body>
 </html>

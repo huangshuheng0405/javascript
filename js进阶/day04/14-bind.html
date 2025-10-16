@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>click</button>
+
+    <script>
+      const obj = {
+        age: 18,
+      }
+      function fn() {
+        console.log(this)
+      }
+
+      // 不会调用函数
+      // 能改变 this 指向
+      // 返回值是格函数  但是这个函数里面的 this 是改过的
+      const fun = fn.bind(obj)
+      console.log(fun)
+      fun()
+
+      // 点击按钮后禁用  2秒后开启
+      const btn = document.querySelector('button')
+      btn.addEventListener('click', function () {
+        this.disabled = true
+        setTimeout(
+          function () {
+            // 在这个函数里面 把 this 由原来的 window 改为 btn
+            this.disabled = false
+          }.bind(this),
+          2000
+        )
+      })
+    </script>
+  </body>
+</html>

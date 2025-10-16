@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // size与getSize 是实例成员说法对吗
+    // name与getName 是静态成员说法对吗
+
+    function fn(){}
+    fn.size = '24cm'
+    fn.getSize = function() {}
+
+    const obj = {
+      name: '123',
+      getName: function() {}
+    }
+
+    obj.name
+    obj.getName()
+
+    // size getSize 是静态成员 属于构造函数或类本身 不需要创建实例就能访问
+    // name getName 时实例成员 需要通过实例才能访问
+  </script>
+</body>
+</html>
