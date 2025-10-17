@@ -19,6 +19,13 @@
     const res3 = fn.bind(obj, 10) 
 
     console.log(res1, res2, res3);
+    // call 会立即执行函数 并讲后续参数传入函数
+    // apply 会立即执行函数 但传入的参数必须是数组
+    // bind 不会立即执行函数 但返回值是一个新的函数 把this永久绑定到obj 并将第一个参数x永久绑定为10
+    // 如果要的到20 调用res3
+
+    console.log(res3());
+    
   </script>
 </body>
 </html>
